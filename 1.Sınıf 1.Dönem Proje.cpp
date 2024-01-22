@@ -1,30 +1,12 @@
-/****************************************************************************************
-**
-**
-**                        SAKARYA ÜNÝVERSÝTESÝ                                 
-**              BÝLGÝSAYAR VE BÝLÝÞÝM BÝLÝMLERÝ FAKÜLTESÝ                    
-**                   BÝLGÝSAYAR MÜHENDÝSLÝÐÝ BÖLÜMÜ                          
-**                     PROGRAMLAMAYA GÝRÝÞ DERSÝ                             
-**                                                                       
-**       ÖDEV NUMARASI    : 1. Dönem Projesi          TARÝH: 31/12/2023                      
-**       ÖÐRENCÝ ADI      : Özgür Demir                         
-**       ÖÐRENCÝ NUMARASI : B221210017                       
-**       DERS GRUBU       : C                                     
-**
-**                                                                      
-*****************************************************************************************/
-
-
-
 #include <fstream>
 #include <string>
-#include <sstream> // stringstream dosya okuma iþlemlerinde belirli veriyi alabilmem için birkaç noktada gerekti
+#include <sstream> // stringstream dosya okuma iÅŸlemlerinde belirli veriyi alabilmem iÃ§in birkaÃ§ noktada gerekti
 #include <iomanip>
 #include <iostream>
 
 using namespace std;
 
-// Takým sýnýfý
+// TakÄ±m sÄ±nÄ±fÄ±
 class Takim {
 private:
     
@@ -50,14 +32,14 @@ public:
         dosya << takimNO << " " << adi << " " << adresi << " "
         << telefon << " " << oyuncuSayisi << " " << yoneticiIsmi << endl;
     }
-    // Dosyayý okuma fonksiyonu
+    // DosyayÄ± okuma fonksiyonu
     void dosyayiOku(ifstream& dosya)
     {
         dosya >> takimNO >> adi >> adresi >> telefon >> oyuncuSayisi >> yoneticiIsmi;
     }
 };
 
-// Futbolcu sýnýfý
+// Futbolcu sÄ±nÄ±fÄ±
 class Futbolcu {
 private:
 
@@ -84,7 +66,7 @@ public:
         dosya << takimNO << " " << TCNO << " " << adi << " " << soyadi << " " << lisansNO << " "
         << konumu << " " << ucret << " " << dogumTarihi << endl;
     }
-    // Dosyayý okuma fonksiyonu
+    // DosyayÄ± okuma fonksiyonu
     bool dosyayiOku(ifstream& dosya)
     {
         if (dosya >> takimNO >> TCNO >> adi >> soyadi >> lisansNO >> konumu >> ucret >> dogumTarihi)
@@ -115,29 +97,29 @@ void haftalikPuanDurumlari();
 int main()
 {
     setlocale(LC_ALL, "turkish");
-    // Ana menü
+    // Ana menÃ¼
     int secim;
     do
     {
         cout << "\n---------------------------------------------" << endl
-            << "\t SÜPER LÝG KONTROL MERKEZÝ \t" << endl
+            << "\t SÃœPER LÄ°G KONTROL MERKEZÄ° \t" << endl
             << "---------------------------------------------" << endl << endl
-            << "\t     ***-MENÜ-***" << endl << endl
-            << "\t1-Takým Oluþturma:" << endl
-            << "\t2-Takým Silme:" << endl
-            << "\t3-Takýmlarý Listeleme:" << endl
-            << "\t4-Takýma Futbolcu Ekleme:" << endl
-            << "\t5-Takýmdan Futbolcu Silme:" << endl
-            << "\t6-Ligdeki Futbolcularý Listeleme:" << endl
-            << "\t7-Belirli Bir Takýmdaki Futbolcularý Listeleme:" << endl
-            << "\t8-Takýmdaki Bir Futbolcuyu Güncelleme:" << endl
-            << "\t9-Oyuncu Menüsü:" << endl
-            << "\t10-Maç Kaydý:" << endl
-            << "\t11-Haftalýk Lig Kaydý:" << endl
-            << "\t12-Haftalýk Lig Kaydýný Görüntüle:" << endl
-            << "\t13-Haftalýk Puan Durumlarý:" << endl
-            << "\t0-Çýkýþ:" << endl << endl
-            << "Seçiminiz: ";
+            << "\t     ***-MENÃœ-***" << endl << endl
+            << "\t1-TakÄ±m OluÅŸturma:" << endl
+            << "\t2-TakÄ±m Silme:" << endl
+            << "\t3-TakÄ±mlarÄ± Listeleme:" << endl
+            << "\t4-TakÄ±ma Futbolcu Ekleme:" << endl
+            << "\t5-TakÄ±mdan Futbolcu Silme:" << endl
+            << "\t6-Ligdeki FutbolcularÄ± Listeleme:" << endl
+            << "\t7-Belirli Bir TakÄ±mdaki FutbolcularÄ± Listeleme:" << endl
+            << "\t8-TakÄ±mdaki Bir Futbolcuyu GÃ¼ncelleme:" << endl
+            << "\t9-Oyuncu MenÃ¼sÃ¼:" << endl
+            << "\t10-MaÃ§ KaydÄ±:" << endl
+            << "\t11-HaftalÄ±k Lig KaydÄ±:" << endl
+            << "\t12-HaftalÄ±k Lig KaydÄ±nÄ± GÃ¶rÃ¼ntÃ¼le:" << endl
+            << "\t13-HaftalÄ±k Puan DurumlarÄ±:" << endl
+            << "\t0-Ã‡Ä±kÄ±ÅŸ:" << endl << endl
+            << "SeÃ§iminiz: ";
         cin >> secim;
         cout << endl;
 
@@ -168,16 +150,16 @@ int main()
             futbolcuGuncelle();
             break;
         case 9:
-            // Oyuncu menüsü
+            // Oyuncu menÃ¼sÃ¼
             int oyuncuSecim;
             do {
-                cout << "Oyuncu Menüsü:\n"
+                cout << "Oyuncu MenÃ¼sÃ¼:\n"
                     << "\t1- Oyuncu Ekleme\n"
                     << "\t2- Oyuncu Silme\n"
-                    << "\t3- Oyuncu Güncelleme\n"
-                    << "\t4- Oyuncularý Listeleme\n"
-                    << "\t0- Ana Menüye Dön\n"
-                    << "Seçiminiz: ";
+                    << "\t3- Oyuncu GÃ¼ncelleme\n"
+                    << "\t4- OyuncularÄ± Listeleme\n"
+                    << "\t0- Ana MenÃ¼ye DÃ¶n\n"
+                    << "SeÃ§iminiz: ";
                 cin >> oyuncuSecim;
                 cout << endl;
 
@@ -198,7 +180,7 @@ int main()
                 case 0:
                     break;
                 default:
-                    cout << "Geçersiz seçim!\n";
+                    cout << "GeÃ§ersiz seÃ§im!\n";
                     break;
                 }
             } while (oyuncuSecim != 0);
@@ -217,10 +199,10 @@ int main()
             haftalikPuanDurumlari();
             break;
         case 0:
-            cout << "Programdan çýkýlýyor...\n";
+            cout << "Programdan Ã§Ä±kÄ±lÄ±yor...\n";
             break;
         default:
-            cout << "Geçersiz seçim!\n";
+            cout << "GeÃ§ersiz seÃ§im!\n";
             break;
         }
     } while (secim != 0);
@@ -231,65 +213,65 @@ int main()
 
 // Fonksiyonlar
 
-// Takým oluþturma fonksiyonu
+// TakÄ±m oluÅŸturma fonksiyonu
 void takimOlustur()
 {
-    // Takým no alma ve kontrol
+    // TakÄ±m no alma ve kontrol
     Takim T1;
-    cout << "Takým no girin: \n";
+    cout << "TakÄ±m no girin: \n";
     cin >> T1.takimNO;
     cout << endl;
     if (T1.takimNO <= 0)
     {
-		cout << "Takým no en az 1 olmalý!\n";
+		cout << "TakÄ±m no en az 1 olmalÄ±!\n";
 		return;
 	}
 
-    // Girilen takým no'ya sahip takým zaten var mý kontrol
+    // Girilen takÄ±m no'ya sahip takÄ±m zaten var mÄ± kontrol
     Takim T2;
     ifstream takimDosyaOku;
     takimDosyaOku.open("takimlar.txt");
-    if (takimDosyaOku.is_open()) // Dosya var mý (oluþturulmuþ mu) kontrol
+    if (takimDosyaOku.is_open()) // Dosya var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
         takimDosyaOku.seekg(0, ios::beg);
         while (takimDosyaOku >> T2.takimNO >> T2.adi >> T2.adresi >> T2.telefon >> T2.oyuncuSayisi >> T2.yoneticiIsmi)
         {
             if (T1.takimNO == T2.takimNO)
             {
-                cout << "Bu takým no'ya sahip takým zaten var!\n";
+                cout << "Bu takÄ±m no'ya sahip takÄ±m zaten var!\n";
                 return;
             }
         }
     }
     takimDosyaOku.close();
     
-    cout << "Takým adý girin: \n";
+    cout << "TakÄ±m adÄ± girin: \n";
     cin >> T1.adi;
 
-    // Girilen takým adýna sahip takým zaten var mý kontrol
+    // Girilen takÄ±m adÄ±na sahip takÄ±m zaten var mÄ± kontrol
     Takim T3;
     takimDosyaOku.open("takimlar.txt");
-    if (takimDosyaOku.is_open()) // Dosya var mý (oluþturulmuþ mu) kontrol
+    if (takimDosyaOku.is_open()) // Dosya var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
         takimDosyaOku.seekg(0, ios::beg);
         while (takimDosyaOku >> T3.takimNO >> T3.adi >> T3.adresi >> T3.telefon >> T3.oyuncuSayisi >> T3.yoneticiIsmi)
         {
             if (T1.adi == T3.adi)
             {
-                cout << "Bu takým adýna sahip takým zaten var!\n";
+                cout << "Bu takÄ±m adÄ±na sahip takÄ±m zaten var!\n";
                 return;
             }
         }
     }
     takimDosyaOku.close();
 
-    cout << "Takým adresini girin: \n";
+    cout << "TakÄ±m adresini girin: \n";
     cin >> T1.adresi;
-    cout << "Takým telefon numarasýný girin: \n";
+    cout << "TakÄ±m telefon numarasÄ±nÄ± girin: \n";
     cin >> T1.telefon;
-    cout << "Takýmdaki oyuncu sayýsýný girin: \n";
+    cout << "TakÄ±mdaki oyuncu sayÄ±sÄ±nÄ± girin: \n";
     cin >> T1.oyuncuSayisi;
-    cout << "Takým yöneticisinin adýný girin: \n";
+    cout << "TakÄ±m yÃ¶neticisinin adÄ±nÄ± girin: \n";
     cin >> T1.yoneticiIsmi;
 
     ofstream dosyaYaz;
@@ -298,26 +280,26 @@ void takimOlustur()
     T1.dosyayaYaz(dosyaYaz);
     dosyaYaz.close();
 }
-// Takým silme fonksiyonu
+// TakÄ±m silme fonksiyonu
 void takimSil()
 {
     Takim T;
     int silinecekTakimNo;
-    cout << "Silinecek Takým Numarasý: ";
+    cout << "Silinecek TakÄ±m NumarasÄ±: ";
     cin >> silinecekTakimNo;
     cout << endl;
 
     ifstream takimKontrol("takimlar.txt");
 
-    if (!takimKontrol.is_open()) // Dosya açýldý mý kontrol
+    if (!takimKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
     {
-		cerr << "Dosya açma hatasý! Önce takým oluþturmayý deneyin." << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce takÄ±m oluÅŸturmayÄ± deneyin." << endl;
 		return;
 	}
 
     takimKontrol.seekg(0, ios::beg);
     bool takimBulundu = false;
-    // Girilen takým no'ya sahip takým var mý kontrol
+    // Girilen takÄ±m no'ya sahip takÄ±m var mÄ± kontrol
     while (takimKontrol >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
         if (silinecekTakimNo == T.takimNO)
@@ -327,9 +309,9 @@ void takimSil()
 		}
 	}
     takimKontrol.close();
-    if (!takimBulundu) // Takým bulunamadýysa hata ver
+    if (!takimBulundu) // TakÄ±m bulunamadÄ±ysa hata ver
     {
-        cout << "Girilen takým no'ya sahip takým bulunamadý.\n";
+        cout << "Girilen takÄ±m no'ya sahip takÄ±m bulunamadÄ±.\n";
         return;
     }
 
@@ -340,12 +322,12 @@ void takimSil()
     takimDosyaOku.seekg(0, ios::beg);
     geciciDosya.seekp(0, ios::beg);
 
-    if (takimDosyaOku.is_open() && geciciDosya.is_open()) // Dosyalar açýldýysa devam et
-    {   // Dosya içeriði okunurken koþula göre geçici dosyaya kaydet
+    if (takimDosyaOku.is_open() && geciciDosya.is_open()) // Dosyalar aÃ§Ä±ldÄ±ysa devam et
+    {   // Dosya iÃ§eriÄŸi okunurken koÅŸula gÃ¶re geÃ§ici dosyaya kaydet
         while (takimDosyaOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
         {   
             //takimDosyaOku.read(reinterpret_cast<char*>(&T), sizeof(T));
-            if (T.takimNO != silinecekTakimNo) // Takým bulunmadýkça kaydet
+            if (T.takimNO != silinecekTakimNo) // TakÄ±m bulunmadÄ±kÃ§a kaydet
             {
                 T.dosyayaYaz(geciciDosya);
 				//geciciDosya.write(reinterpret_cast<char*>(&T), sizeof(T));
@@ -355,80 +337,80 @@ void takimSil()
         geciciDosya.close();
 
         remove("takimlar.txt");
-        if (rename("gecici.txt", "takimlar.txt")) // Dosya adý deðiþtirildi mi
+        if (rename("gecici.txt", "takimlar.txt")) // Dosya adÄ± deÄŸiÅŸtirildi mi
         {
-            cout << "Takým silme baþarýsýz." << endl;
+            cout << "TakÄ±m silme baÅŸarÄ±sÄ±z." << endl;
 
 		}
         else
         {
-            cout << "Takým baþarýyla silindi." << endl;
+            cout << "TakÄ±m baÅŸarÄ±yla silindi." << endl;
 		}
     }
-    // Dosyalar veya dosya açýlmadýysa hata ver
+    // Dosyalar veya dosya aÃ§Ä±lmadÄ±ysa hata ver
     else {
-        cerr << "Dosya açma hatasý!" << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±!" << endl;
     }
 }
-// Takýmlarý listeleme fonksiyonu
+// TakÄ±mlarÄ± listeleme fonksiyonu
 void takimlariListele()
 {
     ifstream takimDosyaOku;
 	takimDosyaOku.open("takimlar.txt", ios::in);
 
-    if (!takimDosyaOku.is_open()) // Dosya açýldý mý kontrol
+    if (!takimDosyaOku.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
     {
-        cerr << "Dosya açma hatasý! Önce takým oluþturmayý deneyin." << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce takÄ±m oluÅŸturmayÄ± deneyin." << endl;
         return;
     }
 
     string satir;
     int takimSayisi = 0;
-    // Takým sayýsýný alma
+    // TakÄ±m sayÄ±sÄ±nÄ± alma
     while (getline(takimDosyaOku, satir))
     {
         takimSayisi += 1;
     }
     takimDosyaOku.close();
-    //takimSayisi -= 1; // Son satýr boþ olduðu için 1 azaltma (ama gerek kalmýyor neden?)
+    //takimSayisi -= 1; // Son satÄ±r boÅŸ olduÄŸu iÃ§in 1 azaltma (ama gerek kalmÄ±yor neden?)
     takimDosyaOku.open("takimlar.txt");
 	Takim T;
 	takimDosyaOku.seekg(0, ios::beg);
-    if (takimDosyaOku.is_open()) // Dosya açýldý mý kontrol
+    if (takimDosyaOku.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
     {
-        cout << "Takýmlar (toplam " << takimSayisi << " adet):" << endl
+        cout << "TakÄ±mlar (toplam " << takimSayisi << " adet):" << endl
             << "-----------------------------" << endl;
-        // Takýmlarý ekrana yazdýrma
+        // TakÄ±mlarÄ± ekrana yazdÄ±rma
         while (takimDosyaOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
         {
-			cout << "Takým No: " << T.takimNO << endl;
-			cout << "Takým Adý: " << T.adi << endl;
-			cout << "Takým Adresi: " << T.adresi << endl;
-			cout << "Takým Telefonu: " << T.telefon << endl;
-			cout << "Takýmdaki Oyuncu Sayýsý: " << T.oyuncuSayisi << endl;
-			cout << "Takým Yöneticisi: " << T.yoneticiIsmi << endl;
+			cout << "TakÄ±m No: " << T.takimNO << endl;
+			cout << "TakÄ±m AdÄ±: " << T.adi << endl;
+			cout << "TakÄ±m Adresi: " << T.adresi << endl;
+			cout << "TakÄ±m Telefonu: " << T.telefon << endl;
+			cout << "TakÄ±mdaki Oyuncu SayÄ±sÄ±: " << T.oyuncuSayisi << endl;
+			cout << "TakÄ±m YÃ¶neticisi: " << T.yoneticiIsmi << endl;
 			cout << "-----------------------------" << endl;
 		}
 		takimDosyaOku.close();
 	}
     else
     {
-		cerr << "Dosya açma hatasý!" << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±!" << endl;
 	}
 
 }
-// Takýma futbolcu ekleme fonksiyonu
+// TakÄ±ma futbolcu ekleme fonksiyonu
 void futbolcuEkle()
 {
     Futbolcu F;
-    cout << "Futbolcunun Ekleneceði Takýmýn TakýmNo'su: ";
+    cout << "Futbolcunun EkleneceÄŸi TakÄ±mÄ±n TakÄ±mNo'su: ";
     cin >> F.takimNO;
 
-    // Girilen takým no'ya sahip takým var mý kontrol
+    // Girilen takÄ±m no'ya sahip takÄ±m var mÄ± kontrol
     Takim T5;
     ifstream takimKontrol("takimlar.txt");
     bool takimBulundu = false;
-    if (takimKontrol.is_open()) // Dosya var mý (oluþturulmuþ mu) kontrol
+    if (takimKontrol.is_open()) // Dosya var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
         takimKontrol.seekg(0, ios::beg);
         while (takimKontrol >> T5.takimNO >> T5.adi >> T5.adresi >> T5.telefon >> T5.oyuncuSayisi >> T5.yoneticiIsmi)
@@ -442,25 +424,25 @@ void futbolcuEkle()
 	}
     else
     {
-        cerr << "Dosya açma hatasý! Önce takým oluþturmayý deneyin." << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce takÄ±m oluÅŸturmayÄ± deneyin." << endl;
         return;
     }
     takimKontrol.close();
-    if (!takimBulundu) // Takým bulunamadýysa hata ver
+    if (!takimBulundu) // TakÄ±m bulunamadÄ±ysa hata ver
     {
-        cout << "Girilen takým no'suna sahip takým bulunamadý.\n";
+        cout << "Girilen takÄ±m no'suna sahip takÄ±m bulunamadÄ±.\n";
         return;
     }
 
     cout << "Futbolcunun TC Kimlik No'su: ";
     cin >> F.TCNO;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Buffer temizleme
-    // Temizlemeyince ve sayý atama sonrasý string atama iþlemi yapýnca atama eksik/hatalý oluyor
+    // Temizlemeyince ve sayÄ± atama sonrasÄ± string atama iÅŸlemi yapÄ±nca atama eksik/hatalÄ± oluyor
 
-    // Girilen TC kimlik no'ya sahip baþka bir oyuncu var mý kontrol
+    // Girilen TC kimlik no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol
     Futbolcu F2;
     ifstream tcKontrol("futbolcular.txt");
-    if (tcKontrol.is_open()) // Dosya var mý (oluþturulmuþ mu) kontrol
+    if (tcKontrol.is_open()) // Dosya var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
 		tcKontrol.seekg(0, ios::beg);
         while (tcKontrol >> F2.takimNO >> F2.TCNO >> F2.adi >> F2.soyadi >> F2.lisansNO >> F2.konumu >> F2.ucret >> F2.dogumTarihi)
@@ -474,19 +456,19 @@ void futbolcuEkle()
 	}
     tcKontrol.close();
 
-    cout << "Futbolcunun Adý: ";
+    cout << "Futbolcunun AdÄ±: ";
     getline(cin, F.adi);
 
-    cout << "Futbolcunun Soyadý: ";
+    cout << "Futbolcunun SoyadÄ±: ";
     getline(cin, F.soyadi);
 
     cout << "Lisans No'su: ";
     getline(cin, F.lisansNO);
 
-    // Girilen lisans no'ya sahip baþka bir oyuncu var mý kontrol
+    // Girilen lisans no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol
     Futbolcu F3;
     ifstream lisansKontrol("futbolcular.txt");
-    if (lisansKontrol.is_open()) // Dosya var mý (oluþturulmuþ mu) kontrol
+    if (lisansKontrol.is_open()) // Dosya var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
 		lisansKontrol.seekg(0, ios::beg);
         while (lisansKontrol >> F3.takimNO >> F3.TCNO >> F3.adi >> F3.soyadi >> F3.lisansNO >> F3.konumu >> F3.ucret >> F3.dogumTarihi)
@@ -503,18 +485,18 @@ void futbolcuEkle()
     cout << "Oyundaki Konumu: ";
     getline(cin, F.konumu);
 
-    cout << "Ücreti: ";
+    cout << "Ãœcreti: ";
     cin >> F.ucret;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Buffer temizleme
 
-    cout << "Doðum Tarihi: ";
+    cout << "DoÄŸum Tarihi: ";
     getline(cin, F.dogumTarihi);
 
     ofstream futbolcuYaz;
     futbolcuYaz.open("futbolcular.txt", ios::app);
     F.dosyayaYaz(futbolcuYaz);
 
-    // Takým dosyasýný güncelleme
+    // TakÄ±m dosyasÄ±nÄ± gÃ¼ncelleme
     Takim T;
     ifstream dosyaOku("takimlar.txt");
     ofstream tempYaz;
@@ -523,17 +505,17 @@ void futbolcuEkle()
     dosyaOku.seekg(0, ios::beg);
     tempYaz.seekp(0, ios::beg);
 
-    if (!dosyaOku.is_open() || !tempYaz.is_open()) // Dosyalar açýldý mý kontrol
+    if (!dosyaOku.is_open() || !tempYaz.is_open()) // Dosyalar aÃ§Ä±ldÄ± mÄ± kontrol
     {
-        cerr << "Dosya açýlamadý!" << endl;
+        cerr << "Dosya aÃ§Ä±lamadÄ±!" << endl;
         return;
     }
 
     takimBulundu = false;
-    // Takýmý bulma ve oyuncu sayýsýný arttýrma
+    // TakÄ±mÄ± bulma ve oyuncu sayÄ±sÄ±nÄ± arttÄ±rma
     while (dosyaOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
-        if (F.takimNO == T.takimNO) // Takým bulunduysa oyuncu sayýsýný arttýr
+        if (F.takimNO == T.takimNO) // TakÄ±m bulunduysa oyuncu sayÄ±sÄ±nÄ± arttÄ±r
         {
             takimBulundu = true;
             T.oyuncuSayisi += 1;
@@ -544,55 +526,55 @@ void futbolcuEkle()
     dosyaOku.close();
     tempYaz.close();
 
-    if (takimBulundu) // Takým dosya içinde varsa devam et
+    if (takimBulundu) // TakÄ±m dosya iÃ§inde varsa devam et
     {
         remove("takimlar.txt");
         if (rename("temp.txt", "takimlar.txt"))
         {
-            cout << "Oyuncu ekleme baþarýsýz." << endl;
+            cout << "Oyuncu ekleme baÅŸarÄ±sÄ±z." << endl;
         }
         else
         {
-            cout << "Oyuncu baþarýyla eklendi." << endl;
+            cout << "Oyuncu baÅŸarÄ±yla eklendi." << endl;
         }
     }
     else
     {
         remove("temp.txt");
-        cout << "Takým bulunamadý." << endl;
+        cout << "TakÄ±m bulunamadÄ±." << endl;
         return;
     }
 }
-// Takýmdan futbolcu silme fonksiyonu
+// TakÄ±mdan futbolcu silme fonksiyonu
 void futbolcuSil()
 {
     ifstream takimKontrol("takimlar.txt");
-    if (!takimKontrol.is_open()) // Takýmlar var mý (oluþturulmuþ mu) kontrol
+    if (!takimKontrol.is_open()) // TakÄ±mlar var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
-        cerr << "Dosya açma hatasý! Önce takým oluþturmayý deneyin." << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce takÄ±m oluÅŸturmayÄ± deneyin." << endl;
         return;
     }
     takimKontrol.close();
 
     ifstream futbolcuKontrol("futbolcular.txt");
-    if (!futbolcuKontrol.is_open()) // Futbolcular var mý (oluþturulmuþ mu) kontrol
+    if (!futbolcuKontrol.is_open()) // Futbolcular var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
-        cerr << "Dosya açma hatasý! Önce futbolcu eklemeyi deneyin." << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce futbolcu eklemeyi deneyin." << endl;
         return;
     }
     futbolcuKontrol.close();
 
     int takimno = 0;
-    cout << "Oyuncusu silinecek takýmýn no'su: ";
+    cout << "Oyuncusu silinecek takÄ±mÄ±n no'su: ";
     cin >> takimno;
     cout << endl;
 
-    // Girilen takým no'ya sahip takým var mý kontrol
+    // Girilen takÄ±m no'ya sahip takÄ±m var mÄ± kontrol
     ifstream takimDosyaOku;
     takimDosyaOku.open("takimlar.txt");
     Takim T5;
     bool takimBulundu = false;
-    if (takimDosyaOku.is_open()) // Dosya açýldý mý kontrol
+    if (takimDosyaOku.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
     {
 		takimDosyaOku.seekg(0, ios::beg);
         while (takimDosyaOku >> T5.takimNO >> T5.adi >> T5.adresi >> T5.telefon >> T5.oyuncuSayisi >> T5.yoneticiIsmi)
@@ -605,14 +587,14 @@ void futbolcuSil()
 		}
 	}
     takimDosyaOku.close();
-    if (!takimBulundu) // Takým bulunamadýysa hata ver
+    if (!takimBulundu) // TakÄ±m bulunamadÄ±ysa hata ver
     {
-        cerr << "Girilen takým no'ya sahip takým bulunamadý.\n";
+        cerr << "Girilen takÄ±m no'ya sahip takÄ±m bulunamadÄ±.\n";
         return;
     }
 
     int answer = 0;
-    cout << "Futbolcuyu TC Kimlik No'sunu kullanarak silmek için '1'i, Lisans No'su ile silmek için '2'yi tuþlayýn\n";
+    cout << "Futbolcuyu TC Kimlik No'sunu kullanarak silmek iÃ§in '1'i, Lisans No'su ile silmek iÃ§in '2'yi tuÅŸlayÄ±n\n";
     cin >> answer;
     cout << endl;
     if (answer == 1)
@@ -622,16 +604,16 @@ void futbolcuSil()
 		cin >> silinecektcno;
 		cout << endl;
 
-        // Girilen TC kimlik no'ya sahip oyuncu var mý kontrol
+        // Girilen TC kimlik no'ya sahip oyuncu var mÄ± kontrol
         Futbolcu F;
         ifstream tcKontrol("futbolcular.txt");
         bool futbolcuBulundu = false;
-        if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+        if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
 		{
 			tcKontrol.seekg(0, ios::beg);
 			while (tcKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
 			{
-                if (silinecektcno == F.TCNO && takimno == F.takimNO) // Girilen TC kimlik no'ya sahip oyuncu varsa sil ama ayný takýmda olmalý
+                if (silinecektcno == F.TCNO && takimno == F.takimNO) // Girilen TC kimlik no'ya sahip oyuncu varsa sil ama aynÄ± takÄ±mda olmalÄ±
                 {
                     futbolcuBulundu = true;
 					break;
@@ -639,22 +621,22 @@ void futbolcuSil()
 			}
 		}
 		tcKontrol.close();
-        if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+        if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
         {
-            cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadý.\n";
+            cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadÄ±.\n";
             return;
         }
 
 		ifstream futbolcudosyaoku("futbolcular.txt");
 		ofstream gecicidosya("gecici_futbolcu.txt");
-		// Dosyalar açýldý mý kontrol
+		// Dosyalar aÃ§Ä±ldÄ± mÄ± kontrol
         if (futbolcudosyaoku.is_open() && gecicidosya.is_open())
         {
 			Futbolcu F;
-			// Geçici dosyaya kaydetme
+			// GeÃ§ici dosyaya kaydetme
             while (futbolcudosyaoku >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
             {
-                if (F.TCNO != silinecektcno) // Oyuncu TC'si silinecek TC'ye eþit deðilse kaydet
+                if (F.TCNO != silinecektcno) // Oyuncu TC'si silinecek TC'ye eÅŸit deÄŸilse kaydet
                 {
 					F.dosyayaYaz(gecicidosya);
 				}
@@ -666,11 +648,11 @@ void futbolcuSil()
         remove("futbolcular.txt");
         if (rename("gecici_futbolcu.txt", "futbolcular.txt"))
         {
-            cout << "Futbolcu silme iþlemi baþarýsýz oldu." << endl;
+            cout << "Futbolcu silme iÅŸlemi baÅŸarÄ±sÄ±z oldu." << endl;
         }
         else
         {
-            cout << "Futbolcu baþarýyla silindi." << endl;
+            cout << "Futbolcu baÅŸarÄ±yla silindi." << endl;
         }
     }
     else if (answer == 2)
@@ -679,16 +661,16 @@ void futbolcuSil()
         cout << "Silinecek futbolcunun lisans no'su: ";
         cin >> silineceklisansno;
         
-        // Girilen lisans no'ya sahip oyuncu var mý kontrol
+        // Girilen lisans no'ya sahip oyuncu var mÄ± kontrol
         Futbolcu F;
         ifstream lisansKontrol("futbolcular.txt");
         bool futbolcuBulundu = false;
-        if (lisansKontrol.is_open()) // Dosya açýldý mý kontrol
+        if (lisansKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
 		{
 			lisansKontrol.seekg(0, ios::beg);
             while (lisansKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
             {
-                if (silineceklisansno == F.lisansNO && takimno == F.takimNO) // Girilen lisans no'ya sahip oyuncu varsa sil ama ayný takýmda olmalý
+                if (silineceklisansno == F.lisansNO && takimno == F.takimNO) // Girilen lisans no'ya sahip oyuncu varsa sil ama aynÄ± takÄ±mda olmalÄ±
                 {
                     futbolcuBulundu = true;
 					break;
@@ -697,22 +679,22 @@ void futbolcuSil()
 		}
         lisansKontrol.close();
 
-        if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+        if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
         {
-			cout << "Girilen lisans No'ya sahip oyuncu bulunamadý.\n";
+			cout << "Girilen lisans No'ya sahip oyuncu bulunamadÄ±.\n";
 			return;
 		}
 
         ifstream futbolcudosyaoku("futbolcular.txt");
         ofstream gecicidosya("gecici_futbolcu.txt");
-        // Dosyalar açýldý mý kontrol
+        // Dosyalar aÃ§Ä±ldÄ± mÄ± kontrol
         if (futbolcudosyaoku.is_open() && gecicidosya.is_open())
         {
             Futbolcu F;
-            // Geçici dosyaya kaydetme
+            // GeÃ§ici dosyaya kaydetme
             while (futbolcudosyaoku >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
             {
-                if (F.lisansNO != silineceklisansno) // Oyuncu LisansNo'su silinecek LisansNo'ya eþit deðilse kaydet
+                if (F.lisansNO != silineceklisansno) // Oyuncu LisansNo'su silinecek LisansNo'ya eÅŸit deÄŸilse kaydet
                 {
                     F.dosyayaYaz(gecicidosya);
                 }
@@ -724,16 +706,16 @@ void futbolcuSil()
         remove("futbolcular.txt");
         if (rename("gecici_futbolcu.txt", "futbolcular.txt"))
         {
-            cout << "Futbolcu silme iþlemi baþarýsýz oldu." << endl;
+            cout << "Futbolcu silme iÅŸlemi baÅŸarÄ±sÄ±z oldu." << endl;
         }
         else
         {
-            cout << "Futbolcu baþarýyla silindi." << endl;
+            cout << "Futbolcu baÅŸarÄ±yla silindi." << endl;
         }
     }
     else
 	{
-		cout << "Geçersiz seçim!\n";
+		cout << "GeÃ§ersiz seÃ§im!\n";
 		return;
 	}
 
@@ -741,10 +723,10 @@ void futbolcuSil()
     ifstream dosyaOku("takimlar.txt");
     ofstream tempeYaz("temp.txt");
     Takim T;
-    // Takým dosyasýný güncelleme
+    // TakÄ±m dosyasÄ±nÄ± gÃ¼ncelleme
     while (dosyaOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
-        if (takimno == T.takimNO) // Takým bulunduysa oyuncu sayýsýný 1 azalt
+        if (takimno == T.takimNO) // TakÄ±m bulunduysa oyuncu sayÄ±sÄ±nÄ± 1 azalt
         {
             T.oyuncuSayisi -= 1;
         }
@@ -754,87 +736,87 @@ void futbolcuSil()
     tempeYaz.close();
 
     remove("takimlar.txt");
-    if (rename("temp.txt", "takimlar.txt")) // Dosya adý deðiþtirildi mi kontrol
+    if (rename("temp.txt", "takimlar.txt")) // Dosya adÄ± deÄŸiÅŸtirildi mi kontrol
     {
-        cout << "Takým güncelleme baþarýsýz." << endl;
+        cout << "TakÄ±m gÃ¼ncelleme baÅŸarÄ±sÄ±z." << endl;
     }
     else
     {
-        cout << "Takým baþarýyla güncellendi." << endl;
+        cout << "TakÄ±m baÅŸarÄ±yla gÃ¼ncellendi." << endl;
     }
 }
-// Tüm futbolcularý listeleme fonksiyonu
+// TÃ¼m futbolcularÄ± listeleme fonksiyonu
 void tumFutbolculariListele()
  {
     ifstream futbolcudosyaoku;
     futbolcudosyaoku.open("futbolcular.txt");
-    if (!futbolcudosyaoku.is_open()) // Futbolcu var mý kontrol
+    if (!futbolcudosyaoku.is_open()) // Futbolcu var mÄ± kontrol
 	{
-		cerr << "Dosya açma hatasý! Önce futbolcu eklemeyi deneyin." << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce futbolcu eklemeyi deneyin." << endl;
 		return;
 	}
 
     string satir;
     int futbolcuSayisi = 0;
     futbolcudosyaoku.seekg(0, ios::beg);
-    // Futbolcu sayýsýný bulma
+    // Futbolcu sayÄ±sÄ±nÄ± bulma
     while (getline(futbolcudosyaoku, satir))
     {
         futbolcuSayisi += 1;
     }
     futbolcudosyaoku.close();
-    //futbolcuSayisi -= 1; // Son satýr boþ olduðu için 1 azalt (azaltmaya gerek kalmadan doðru sayýyor ama neden?)
+    //futbolcuSayisi -= 1; // Son satÄ±r boÅŸ olduÄŸu iÃ§in 1 azalt (azaltmaya gerek kalmadan doÄŸru sayÄ±yor ama neden?)
     futbolcudosyaoku.open("futbolcular.txt");
-    if (futbolcudosyaoku.is_open()) // Dosya açýldý mý kontrol
+    if (futbolcudosyaoku.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
     {
 		 Futbolcu F;
          cout << "Futbolcular (toplam "<< futbolcuSayisi << " adet):" << endl;
          cout << "-----------------------------" << endl;
-         // Futbolcularý ekrana yazdýrma
+         // FutbolcularÄ± ekrana yazdÄ±rma
          while (futbolcudosyaoku >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
          {
-			 cout << "Takým No: " << F.takimNO << endl;
+			 cout << "TakÄ±m No: " << F.takimNO << endl;
 			 cout << "TC Kimlik No: " << F.TCNO << endl;
-			 cout << "Adý: " << F.adi << endl;
-			 cout << "Soyadý: " << F.soyadi << endl;
+			 cout << "AdÄ±: " << F.adi << endl;
+			 cout << "SoyadÄ±: " << F.soyadi << endl;
 			 cout << "Lisans No: " << F.lisansNO << endl;
 			 cout << "Oyundaki Konumu: " << F.konumu << endl;
-			 cout << "Ücreti: " << F.ucret << endl;
-			 cout << "Doðum Tarihi: " << F.dogumTarihi << endl;
+			 cout << "Ãœcreti: " << F.ucret << endl;
+			 cout << "DoÄŸum Tarihi: " << F.dogumTarihi << endl;
 			 cout << "-----------------------------" << endl;
 		 }
 		 futbolcudosyaoku.close();
 	}
     else
     {
-		 cerr << "Dosya açma hatasý!" << endl;
+		 cerr << "Dosya aÃ§ma hatasÄ±!" << endl;
 	}
  
 }
-// Takýma göre futbolcularý listeleme fonksiyonu
+// TakÄ±ma gÃ¶re futbolcularÄ± listeleme fonksiyonu
 void takimaGoreFutbolculariListele()
 {
     ifstream takimKontrol("takimlar.txt");
 
-    if (!takimKontrol.is_open()) // Takým var mý kontrol
+    if (!takimKontrol.is_open()) // TakÄ±m var mÄ± kontrol
     {
-        cerr << "Dosya açma hatasý! Önce takým oluþturmayý deneyin." << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce takÄ±m oluÅŸturmayÄ± deneyin." << endl;
         return;
     }
     takimKontrol.close();
 
     int takimno = 0;
-    cout << "Futbolcularý Listelenecek Takýmýn TakýmNo'su: ";
+    cout << "FutbolcularÄ± Listelenecek TakÄ±mÄ±n TakÄ±mNo'su: ";
     cin >> takimno;
     cout << endl;
 
     ifstream takimOku("takimlar.txt");
     Takim T;
     bool takimBulundu = false;
-    // Böyle bir takým var mý yok mu kontrol
+    // BÃ¶yle bir takÄ±m var mÄ± yok mu kontrol
     while (takimOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
-        if (takimno == T.takimNO) // Takým bulundu mu kontrol
+        if (takimno == T.takimNO) // TakÄ±m bulundu mu kontrol
         {
             takimBulundu = true;
             break;
@@ -842,37 +824,37 @@ void takimaGoreFutbolculariListele()
     }
     takimOku.close();
 
-    if (!takimBulundu) // Takým bulunamadýysa dönüt
+    if (!takimBulundu) // TakÄ±m bulunamadÄ±ysa dÃ¶nÃ¼t
     {
-        cout << "Girilen takýmNo'suna sahip takým bulunamadý.\n";
+        cout << "Girilen takÄ±mNo'suna sahip takÄ±m bulunamadÄ±.\n";
         return;
     }
 
     ifstream futbolcudosyaoku("futbolcular.txt");
 
-    if (!futbolcudosyaoku.is_open()) // Futbolcu var mý kontrol
+    if (!futbolcudosyaoku.is_open()) // Futbolcu var mÄ± kontrol
 	{
-		cerr << "Dosya açma hatasý! Önce futbolcu eklemeyi deneyin." << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce futbolcu eklemeyi deneyin." << endl;
 		return;
 	}
     else if (futbolcudosyaoku.is_open())
     {
         Futbolcu F;
-        cout << takimno << " No'lu Takýmýn Futbolcularý:" << endl;
+        cout << takimno << " No'lu TakÄ±mÄ±n FutbolcularÄ±:" << endl;
         cout << "-----------------------------" << endl;
-        // Takýma ait futbolcularý ekrana yazdýrma
+        // TakÄ±ma ait futbolcularÄ± ekrana yazdÄ±rma
         while (futbolcudosyaoku >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
         {
-            if (F.takimNO == takimno) // Takým bulunduysa ekrana yazdýr
+            if (F.takimNO == takimno) // TakÄ±m bulunduysa ekrana yazdÄ±r
             {
-                cout << "Takým No: " << F.takimNO << endl;
+                cout << "TakÄ±m No: " << F.takimNO << endl;
                 cout << "TC Kimlik No: " << F.TCNO << endl;
-                cout << "Adý: " << F.adi << endl;
-                cout << "Soyadý: " << F.soyadi << endl;
+                cout << "AdÄ±: " << F.adi << endl;
+                cout << "SoyadÄ±: " << F.soyadi << endl;
                 cout << "Lisans No: " << F.lisansNO << endl;
                 cout << "Oyundaki Konumu: " << F.konumu << endl;
-                cout << "Ücreti: " << F.ucret << endl;
-                cout << "Doðum Tarihi: " << F.dogumTarihi << endl;
+                cout << "Ãœcreti: " << F.ucret << endl;
+                cout << "DoÄŸum Tarihi: " << F.dogumTarihi << endl;
                 cout << "-----------------------------" << endl;
             }
         }
@@ -880,44 +862,44 @@ void takimaGoreFutbolculariListele()
     }
     else
     {
-        cerr << "Dosya açma hatasý!" << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±!" << endl;
     }
 }
-// Futbolcu güncelleme fonksiyonu
+// Futbolcu gÃ¼ncelleme fonksiyonu
 void futbolcuGuncelle()
 {
     ifstream futbolcuKontrol("futbolcular.txt");
-    if (!futbolcuKontrol.is_open()) // Futbolcular var mý (oluþturulmuþ mu) kontrol
+    if (!futbolcuKontrol.is_open()) // Futbolcular var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
-		cerr << "Dosya açma hatasý! Önce futbolcu eklemeyi deneyin." << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce futbolcu eklemeyi deneyin." << endl;
 		return;
 	}
     futbolcuKontrol.close();
 
     int answer = 0;
-    cout << "Futbolcuyu TC Kimlik No ile güncellemek için '1'i, Lisans No ile güncellemek için '2'yi tuþlayýn\n";
+    cout << "Futbolcuyu TC Kimlik No ile gÃ¼ncellemek iÃ§in '1'i, Lisans No ile gÃ¼ncellemek iÃ§in '2'yi tuÅŸlayÄ±n\n";
     cin >> answer;
     cout << endl;
 
     if (answer != 1 && answer != 2)
     {
-        cout << "Hatalý seçim!\n";
+        cout << "HatalÄ± seÃ§im!\n";
         return;
     }
 
     if (answer == 1)
     {
         string guncellenecektcno;
-        cout << "Güncellenecek Futbolcunun TC kimlik No Bilgisi: ";
+        cout << "GÃ¼ncellenecek Futbolcunun TC kimlik No Bilgisi: ";
         cin >> guncellenecektcno;
         cout << endl;
 
-        // Girilen TC kimlik no'ya sahip oyuncu var mý kontrol
+        // Girilen TC kimlik no'ya sahip oyuncu var mÄ± kontrol
         Futbolcu F;
         ifstream tcKontrol("futbolcular.txt");
         bool futbolcuBulundu = false;
         string guncelleneceklisansno;
-        if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+        if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
         {
             tcKontrol.seekg(0, ios::beg);
             while (tcKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
@@ -932,51 +914,51 @@ void futbolcuGuncelle()
         }
         tcKontrol.close();
 
-        if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+        if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
         {
-			cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadý.\n";
+			cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadÄ±.\n";
 			return;
 		}
 
         ifstream futbolcudosyaoku("futbolcular.txt");
         ofstream gecicidosya("gecici_futbolcu.txt");
-        // Dosyalar açýldý mý kontrolü
+        // Dosyalar aÃ§Ä±ldÄ± mÄ± kontrolÃ¼
         if (futbolcudosyaoku.is_open() && gecicidosya.is_open())
         {
             Futbolcu F;
-            // Geçici dosyaya kaydetme
+            // GeÃ§ici dosyaya kaydetme
             while (futbolcudosyaoku >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
             {
-                // Eðer oyuncu bulunmadýysa direkt dosyaya yaz
+                // EÄŸer oyuncu bulunmadÄ±ysa direkt dosyaya yaz
                 if (F.TCNO != guncellenecektcno)
                 {
                     F.dosyayaYaz(gecicidosya);
                 }
-                else // Güncellenecek oyuncu bulunduysa yeni bilgileri al
+                else // GÃ¼ncellenecek oyuncu bulunduysa yeni bilgileri al
                 {
                     cout << "Yeni bilgileri girin:" << endl;
                     cout << "-----------------------------" << endl;
-                    cout << "Yeni Takým No: ";
+                    cout << "Yeni TakÄ±m No: ";
                     cin >> F.takimNO;
 
                     cout << "Yeni TC Kimlik No: ";
                     cin >> F.TCNO;
                     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Buffer temizleme
 
-                    // Girilen TC kimlik no'ya sahip baþka bir oyuncu var mý kontrol
+                    // Girilen TC kimlik no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol
                     Futbolcu F2;
                     ifstream tcKontrol("futbolcular.txt");
-                    if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+                    if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
                     {
 						tcKontrol.seekg(0, ios::beg);
                         while (tcKontrol >> F2.takimNO >> F2.TCNO >> F2.adi >> F2.soyadi >> F2.lisansNO >> F2.konumu >> F2.ucret >> F2.dogumTarihi)
                         {
-                            if (guncellenecektcno == F2.TCNO) // Kendi TC'si hariç ayný TC'ye sahip baþka bir oyuncu var mý kontrol et
+                            if (guncellenecektcno == F2.TCNO) // Kendi TC'si hariÃ§ aynÄ± TC'ye sahip baÅŸka bir oyuncu var mÄ± kontrol et
                             {
                                 continue;
                             }
 
-                            if (F.TCNO == F2.TCNO) // Girilen TC kimlik no'ya sahip baþka bir oyuncu var mý kontrol et
+                            if (F.TCNO == F2.TCNO) // Girilen TC kimlik no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol et
                             {
 								cout << "Bu TC kimlik no'ya sahip bir oyuncu zaten var!\n";
 								return;
@@ -984,29 +966,29 @@ void futbolcuGuncelle()
 						}
 					}
 
-                    cout << "Yeni Adý: ";
+                    cout << "Yeni AdÄ±: ";
                     getline(cin, F.adi);
 
-                    cout << "Yeni Soyadý: ";
+                    cout << "Yeni SoyadÄ±: ";
                     getline(cin, F.soyadi);
 
                     cout << "Yeni Lisans No: ";
                     getline(cin, F.lisansNO);
 
-                    // Girilen lisans no'ya sahip baþka bir oyuncu var mý kontrol
+                    // Girilen lisans no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol
                     Futbolcu F3;
                     ifstream lisansKontrol("futbolcular.txt");
-                    if (lisansKontrol.is_open()) // Dosya açýldý mý kontrol
+                    if (lisansKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
                     {
                         lisansKontrol.seekg(0, ios::beg);
                         while (lisansKontrol >> F3.takimNO >> F3.TCNO >> F3.adi >> F3.soyadi >> F3.lisansNO >> F3.konumu >> F3.ucret >> F3.dogumTarihi)
                         {
-                            if (guncelleneceklisansno == F3.lisansNO) // Kendi Lisans No'su hariç ayný Lisans No'ya sahip oyuncu var mý kontrol et
+                            if (guncelleneceklisansno == F3.lisansNO) // Kendi Lisans No'su hariÃ§ aynÄ± Lisans No'ya sahip oyuncu var mÄ± kontrol et
                             {
                                 continue;
                             }
 
-                            if (F.lisansNO == F3.lisansNO) // Girilen lisans no'ya sahip baþka bir oyuncu var mý kontrol et
+                            if (F.lisansNO == F3.lisansNO) // Girilen lisans no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol et
                             {
 								cout << "Bu lisans no'ya sahip oyuncu zaten var!\n";
 								return;
@@ -1017,11 +999,11 @@ void futbolcuGuncelle()
                     cout << "Yeni Oyundaki Konumu: ";
                     getline(cin, F.konumu);
 
-                    cout << "Yeni Ücreti: ";
+                    cout << "Yeni Ãœcreti: ";
                     cin >> F.ucret;
                     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Buffer temizleme
 
-                    cout << "Yeni Doðum Tarihi: ";
+                    cout << "Yeni DoÄŸum Tarihi: ";
                     getline(cin, F.dogumTarihi);
 
                     F.dosyayaYaz(gecicidosya);
@@ -1035,7 +1017,7 @@ void futbolcuGuncelle()
     else if (answer == 2)
     {
         string guncelleneceklisansno;
-        cout << "Güncellenecek futbolcunun lisans no'su: ";
+        cout << "GÃ¼ncellenecek futbolcunun lisans no'su: ";
         cin >> guncelleneceklisansno;
         cout << endl;
 
@@ -1043,8 +1025,8 @@ void futbolcuGuncelle()
         ifstream lisansKontrol("futbolcular.txt");
         bool futbolcuBulundu = false;
         string guncellenecektcno;
-        // Girilen lisans no'ya sahip bir oyuncu var mý kontrol
-        if (lisansKontrol.is_open()) // Dosya açýldý mý kontrol
+        // Girilen lisans no'ya sahip bir oyuncu var mÄ± kontrol
+        if (lisansKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
         {
             lisansKontrol.seekg(0, ios::beg);
             while (lisansKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
@@ -1059,36 +1041,36 @@ void futbolcuGuncelle()
         }
         else
         {
-			cerr << "Dosya açma hatasý! Futbolcu eklemeyi deneyin." << endl;
+			cerr << "Dosya aÃ§ma hatasÄ±! Futbolcu eklemeyi deneyin." << endl;
 			return;
 		}
         lisansKontrol.close();
 
-        if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+        if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
         {
-			cout << "Girilen lisans No'ya sahip oyuncu bulunamadý.\n";
+			cout << "Girilen lisans No'ya sahip oyuncu bulunamadÄ±.\n";
 			return;
 		}
 
         ifstream futbolcudosyaoku("futbolcular.txt");
         ofstream gecicidosya("gecici_futbolcu.txt");
-        // Dosyalar açýldý mý kontrol
+        // Dosyalar aÃ§Ä±ldÄ± mÄ± kontrol
         if (futbolcudosyaoku.is_open() && gecicidosya.is_open())
         {
             Futbolcu F;
-            // Geçici dosyaya kaydetme
+            // GeÃ§ici dosyaya kaydetme
             while (futbolcudosyaoku >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
             {
-                // Eðer oyuncu bulunmadýysa direkt dosyaya yaz
+                // EÄŸer oyuncu bulunmadÄ±ysa direkt dosyaya yaz
                 if (F.lisansNO != guncelleneceklisansno)
                 {
                     F.dosyayaYaz(gecicidosya);
                 }
-                else // Güncellenecek oyuncu bulunduysa yeni bilgileri al
+                else // GÃ¼ncellenecek oyuncu bulunduysa yeni bilgileri al
                 {
                     cout << "Yeni bilgileri girin:" << endl;
                     cout << "-----------------------------" << endl;
-                    cout << "Yeni Takým No: ";
+                    cout << "Yeni TakÄ±m No: ";
                     cin >> F.takimNO;
 
                     cout << "Yeni TC Kimlik No: ";
@@ -1096,15 +1078,15 @@ void futbolcuGuncelle()
                     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Buffer temizleme
 
 
-                    // Girilen TC kimlik no'ya sahip baþka bir oyuncu var mý kontrol
+                    // Girilen TC kimlik no'ya sahip baÅŸka bir oyuncu var mÄ± kontrol
                     Futbolcu F6;
                     ifstream tcKontrol("futbolcular.txt");
-                    if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+                    if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
                     {
                         tcKontrol.seekg(0, ios::beg);
                         while (tcKontrol >> F6.takimNO >> F6.TCNO >> F6.adi >> F6.soyadi >> F6.lisansNO >> F6.konumu >> F6.ucret >> F6.dogumTarihi)
                         {
-                            if (guncellenecektcno == F6.TCNO) // Kendi TC'si hariç ayný TC'ye sahip oyuncu var mý kontrol et
+                            if (guncellenecektcno == F6.TCNO) // Kendi TC'si hariÃ§ aynÄ± TC'ye sahip oyuncu var mÄ± kontrol et
                             {
                                 continue;
                             }
@@ -1117,24 +1099,24 @@ void futbolcuGuncelle()
                         }
                     }
 
-                    cout << "Yeni Adý: ";
+                    cout << "Yeni AdÄ±: ";
                     getline(cin, F.adi);
 
-                    cout << "Yeni Soyadý: ";
+                    cout << "Yeni SoyadÄ±: ";
                     getline(cin, F.soyadi);
 
                     cout << "Yeni Lisans No: ";
                     getline(cin, F.lisansNO);
 
-                    // Girilen lisans no'ya sahip oyuncu var mý kontrol
+                    // Girilen lisans no'ya sahip oyuncu var mÄ± kontrol
                     Futbolcu F7;
                     ifstream lisansKontrol("futbolcular.txt");
-                    if (lisansKontrol.is_open()) // Dosya açýldý mý kontrol
+                    if (lisansKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
                     {
                         lisansKontrol.seekg(0, ios::beg);
                         while (lisansKontrol >> F7.takimNO >> F7.TCNO >> F7.adi >> F7.soyadi >> F7.lisansNO >> F7.konumu >> F7.ucret >> F7.dogumTarihi)
                         {
-                            if (guncelleneceklisansno == F7.lisansNO) // Kendi LisansNo'su hariç ayný LisansNo'ya sahip oyuncu var mý kontrol et
+                            if (guncelleneceklisansno == F7.lisansNO) // Kendi LisansNo'su hariÃ§ aynÄ± LisansNo'ya sahip oyuncu var mÄ± kontrol et
                             {
                                 continue;
                             }
@@ -1150,11 +1132,11 @@ void futbolcuGuncelle()
                     cout << "Yeni Oyundaki Konumu: ";
                     getline(cin, F.konumu);
 
-                    cout << "Yeni Ücreti: ";
+                    cout << "Yeni Ãœcreti: ";
                     cin >> F.ucret;
                     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Buffer temizleme
 
-                    cout << "Yeni Doðum Tarihi: ";
+                    cout << "Yeni DoÄŸum Tarihi: ";
                     getline(cin, F.dogumTarihi);
 
                     F.dosyayaYaz(gecicidosya);
@@ -1166,79 +1148,79 @@ void futbolcuGuncelle()
     }
 
 	remove("futbolcular.txt");
-    // Dosya adý deðiþtirildi mi kontrol
+    // Dosya adÄ± deÄŸiÅŸtirildi mi kontrol
     if (rename("gecici_futbolcu.txt", "futbolcular.txt"))
     {
-        cout << "Futbolcu güncelleneme iþlemi baþarýsýz." << endl;
+        cout << "Futbolcu gÃ¼ncelleneme iÅŸlemi baÅŸarÄ±sÄ±z." << endl;
 	}
     else
     {
-        cout << "Futbolcu baþarýyla güncellendi." << endl;
+        cout << "Futbolcu baÅŸarÄ±yla gÃ¼ncellendi." << endl;
     }
 }
-// Maç kaydý alma fonksiyonu
+// MaÃ§ kaydÄ± alma fonksiyonu
 void futbolOyunuKaydi()
 {
-    // Takým kontrolü
+    // TakÄ±m kontrolÃ¼
     ifstream takimKontrol("takimlar.txt");
-    if (!takimKontrol.is_open()) // Takýmlar var mý (oluþturulmuþ mu) kontrol
+    if (!takimKontrol.is_open()) // TakÄ±mlar var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
-		cerr << "Dosya açma hatasý! Önce takým oluþturmayý deneyin." << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce takÄ±m oluÅŸturmayÄ± deneyin." << endl;
 		return;
 	}
     takimKontrol.close();
 
     string evSahibi;
-    cout << "Ev sahibi takýmýn adýný girin: ";
-    cin.ignore(); // Sayýsal giriþ aldýktan sonra metinsel giriþ alýyosak gerekiyor
-    getline(cin, evSahibi);                  // Önceki giriþlerin tamamýný temizler
+    cout << "Ev sahibi takÄ±mÄ±n adÄ±nÄ± girin: ";
+    cin.ignore(); // SayÄ±sal giriÅŸ aldÄ±ktan sonra metinsel giriÅŸ alÄ±yosak gerekiyor
+    getline(cin, evSahibi);                  // Ã–nceki giriÅŸlerin tamamÄ±nÄ± temizler
     cout << endl;
 
-    // Böyle bir takým var mý yok mu kontrol
+    // BÃ¶yle bir takÄ±m var mÄ± yok mu kontrol
     Takim T;
     ifstream takimOku("takimlar.txt");
     bool takimBulundu = false;
     while (takimOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
-        if (evSahibi == T.adi) // Takým bulundu mu kontrol
+        if (evSahibi == T.adi) // TakÄ±m bulundu mu kontrol
         {
 			takimBulundu = true;
 			break;
 		}
 	}
     takimOku.close();
-    if (!takimBulundu) // Takým bulunamadýysa dönüt
+    if (!takimBulundu) // TakÄ±m bulunamadÄ±ysa dÃ¶nÃ¼t
     {
-        cerr << "Girilen takým bulunamadý.\n";
+        cerr << "Girilen takÄ±m bulunamadÄ±.\n";
         return;
     }
 
     string rakipTakim;
-    cout << "Karþýlaþýlan takýmýn adýný girin: ";
+    cout << "KarÅŸÄ±laÅŸÄ±lan takÄ±mÄ±n adÄ±nÄ± girin: ";
     getline(cin, rakipTakim);
     cout << endl;
 
-    // Böyle bir takým var mý yok mu kontrol
+    // BÃ¶yle bir takÄ±m var mÄ± yok mu kontrol
     ifstream takimOku2("takimlar.txt");
     takimOku2.seekg(0, ios::beg);
     takimBulundu = false;
     while (takimOku2 >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
-        if (rakipTakim == T.adi) // Takým bulundu mu kontrol
+        if (rakipTakim == T.adi) // TakÄ±m bulundu mu kontrol
         {
             takimBulundu = true;
             break;
         }
     }
     takimOku2.close();
-    if (!takimBulundu) // Takým bulunamadýysa dönüt
+    if (!takimBulundu) // TakÄ±m bulunamadÄ±ysa dÃ¶nÃ¼t
     {
-		cerr << "Girilen takým bulunamadý.\n";
+		cerr << "Girilen takÄ±m bulunamadÄ±.\n";
 		return;
 	}
 
     int skorEv = 0, skorMisafir = 0;
-    cout << "Ev sahibi takým skoru: ";
+    cout << "Ev sahibi takÄ±m skoru: ";
     cin >> skorEv;
     if (skorEv < 0) // Skor negatif olamaz
     {
@@ -1246,7 +1228,7 @@ void futbolOyunuKaydi()
 		return;
 	}
 
-    cout << "Misafir takým skoru: ";
+    cout << "Misafir takÄ±m skoru: ";
     cin >> skorMisafir;
     if (skorMisafir < 0) // Skor negatif olamaz
     {
@@ -1255,33 +1237,33 @@ void futbolOyunuKaydi()
     }
 
     string tarih;
-    cout << "Maç Tarihi: ";
+    cout << "MaÃ§ Tarihi: ";
     cin.ignore();
     getline(cin, tarih);
 
     int hafta = 0;
-    cout << "Kaçýncý hafta: ";
+    cout << "KaÃ§Ä±ncÄ± hafta: ";
     cin >> hafta;
-    if (hafta <= 0) // Hafta negatif veya sýfýr olamaz
+    if (hafta <= 0) // Hafta negatif veya sÄ±fÄ±r olamaz
     {
-		cout << "Hafta negatif veya sýfýr olamaz!\n";
+		cout << "Hafta negatif veya sÄ±fÄ±r olamaz!\n";
 		return;
 	}
 
     ofstream maclarDosyaYaz;
     maclarDosyaYaz.open("maclar.txt", ios::app);
     maclarDosyaYaz << "\t" << evSahibi << " vs " << rakipTakim << endl;
-    maclarDosyaYaz << hafta << ". Hafta Karþýlaþmasý Kaydý\n";
+    maclarDosyaYaz << hafta << ". Hafta KarÅŸÄ±laÅŸmasÄ± KaydÄ±\n";
     maclarDosyaYaz << "##############################" << endl;
     maclarDosyaYaz << "Tarih: " << tarih << endl;
     maclarDosyaYaz << "Skor: " << skorEv << " - " << skorMisafir << endl;
 
     int toplamGolAtanOyuncu = 0;
-    cout << "Toplam kaç farklý oyuncu gol attý: ";
+    cout << "Toplam kaÃ§ farklÄ± oyuncu gol attÄ±: ";
     cin >> toplamGolAtanOyuncu;
     if (toplamGolAtanOyuncu < 0)
     {
-		cout << "Gol atan oyuncu sayýsý negatif olamaz!\n";
+		cout << "Gol atan oyuncu sayÄ±sÄ± negatif olamaz!\n";
 		return;
 	}
 
@@ -1293,7 +1275,7 @@ void futbolOyunuKaydi()
         cout << "Gol Atan Oyuncular:\n";
     }
     
-    maclarDosyaYaz << "Gol Atan Farklý Oyuncu Sayýsý: " << toplamGolAtanOyuncu << endl;
+    maclarDosyaYaz << "Gol Atan FarklÄ± Oyuncu SayÄ±sÄ±: " << toplamGolAtanOyuncu << endl;
     maclarDosyaYaz << "Gol Atan Oyuncular:\n";
     
     for (int i = 1; i <= toplamGolAtanOyuncu; i++)
@@ -1301,11 +1283,11 @@ void futbolOyunuKaydi()
         cout << "Gol Atan Oyuncunun TC'si: ";
         cin >> golAtan;
 
-        // Girilen TC kimlik no'ya sahip oyuncu var mý kontrol
+        // Girilen TC kimlik no'ya sahip oyuncu var mÄ± kontrol
         Futbolcu F;
         ifstream tcKontrol("futbolcular.txt");
         bool futbolcuBulundu = false;
-        if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+        if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
         {
 			tcKontrol.seekg(0, ios::beg);
             while (tcKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
@@ -1318,18 +1300,18 @@ void futbolOyunuKaydi()
 			}
 		}
         tcKontrol.close();
-        if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+        if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
         {
-            cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadý.\n";
+            cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadÄ±.\n";
             return;
         }
 
 
-        cout << "Attýðý Gol Sayýsý: ";
+        cout << "AttÄ±ÄŸÄ± Gol SayÄ±sÄ±: ";
         cin >> gol;
         if (gol < 0) // Gol negatif olamaz
         {
-            cout << "Gol sayýsý negatif olamaz!\n";
+            cout << "Gol sayÄ±sÄ± negatif olamaz!\n";
             return;
         }
 
@@ -1337,37 +1319,37 @@ void futbolOyunuKaydi()
     }
     maclarDosyaYaz << "-------------------------------" << endl;
 
-    // Maçta oynayan oyuncularý kaydetme
+    // MaÃ§ta oynayan oyuncularÄ± kaydetme
 
     int oyuncuSayisi;
-    cout << "Maçta oynayan oyuncu sayýsý: ";
+    cout << "MaÃ§ta oynayan oyuncu sayÄ±sÄ±: ";
     cin >> oyuncuSayisi;
-    if (oyuncuSayisi <= 21) // Oyuncu sayýsý 22 den küçük olamaz
+    if (oyuncuSayisi <= 21) // Oyuncu sayÄ±sÄ± 22 den kÃ¼Ã§Ã¼k olamaz
     {
-		cout << "Oyuncu sayýsý 22 den küçük olamaz!\n";
+		cout << "Oyuncu sayÄ±sÄ± 22 den kÃ¼Ã§Ã¼k olamaz!\n";
 		return;
 	}
 
     char answer = 'h';
-    cout << "Maçta oynayan oyuncularýn TC kimlik bilgilerini kaydetmek istiyor musunuz? (e/h) (" << oyuncuSayisi << " adet kayýt gerekli)\n";
+    cout << "MaÃ§ta oynayan oyuncularÄ±n TC kimlik bilgilerini kaydetmek istiyor musunuz? (e/h) (" << oyuncuSayisi << " adet kayÄ±t gerekli)\n";
     cin >> answer;
-    if (answer == 'e' || answer == 'E') // Giriþ kontrolü
+    if (answer == 'e' || answer == 'E') // GiriÅŸ kontrolÃ¼
     {
-        maclarDosyaYaz << "Maçta Oynayan Oyuncu Sayýsý: " << oyuncuSayisi << endl;
-        maclarDosyaYaz << "Maçta Oynayan Oyuncular: \n";
+        maclarDosyaYaz << "MaÃ§ta Oynayan Oyuncu SayÄ±sÄ±: " << oyuncuSayisi << endl;
+        maclarDosyaYaz << "MaÃ§ta Oynayan Oyuncular: \n";
         maclarDosyaYaz << "-------------------------------" << endl;
-        // Her bir oyuncuyu kaydetmek için döngü
+        // Her bir oyuncuyu kaydetmek iÃ§in dÃ¶ngÃ¼
         for (int i = 1; i <= oyuncuSayisi; i++)
         {
             string oyuncuTC;
-            cout << i << ". Oyuncunun TC Kimlik Numarasý: ";
+            cout << i << ". Oyuncunun TC Kimlik NumarasÄ±: ";
             cin >> oyuncuTC;
 
-            // Girilen TC kimlik no'ya sahip oyuncu var mý kontrol
+            // Girilen TC kimlik no'ya sahip oyuncu var mÄ± kontrol
             Futbolcu F;
             ifstream tcKontrol("futbolcular.txt");
             bool futbolcuBulundu = false;
-            if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+            if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
             {
 				tcKontrol.seekg(0, ios::beg);
                 while (tcKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
@@ -1380,9 +1362,9 @@ void futbolOyunuKaydi()
 				}
 			}
             tcKontrol.close();
-            if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+            if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
             {
-				cout << "Girilen TC Kimlik No'ya sahip oyuncu bulunamadý.\n";
+				cout << "Girilen TC Kimlik No'ya sahip oyuncu bulunamadÄ±.\n";
 				return;
 			}
             maclarDosyaYaz << i << ". Oynayan Oyuncu: " << oyuncuTC << endl;
@@ -1390,45 +1372,45 @@ void futbolOyunuKaydi()
     }
     else
     {
-        cout << "Sadece oynayan oyuncularýn sayý bilgisi kaydedildi.\n";
-        maclarDosyaYaz << "Maçta Oynayan Oyuncu Sayýsý: " << oyuncuSayisi << endl;
+        cout << "Sadece oynayan oyuncularÄ±n sayÄ± bilgisi kaydedildi.\n";
+        maclarDosyaYaz << "MaÃ§ta Oynayan Oyuncu SayÄ±sÄ±: " << oyuncuSayisi << endl;
     }
 
-    // Oyuncu deðiþikliklerini kaydetme
+    // Oyuncu deÄŸiÅŸikliklerini kaydetme
 
     int degisiklikSayisi;
-    cout << "Maç sýrasýnda kaç oyuncu deðiþikliði oldu: ";
+    cout << "MaÃ§ sÄ±rasÄ±nda kaÃ§ oyuncu deÄŸiÅŸikliÄŸi oldu: ";
     cin >> degisiklikSayisi;
-    if (degisiklikSayisi < 0) // Deðiþiklik sayýsý negatif olamaz
+    if (degisiklikSayisi < 0) // DeÄŸiÅŸiklik sayÄ±sÄ± negatif olamaz
     {
-        cout << "Deðiþiklik sayýsý negatif olamaz!\n";
+        cout << "DeÄŸiÅŸiklik sayÄ±sÄ± negatif olamaz!\n";
         return;
     }
-    if (degisiklikSayisi > 10) // Deðiþiklik sayýsý 10'dan fazla olamaz
+    if (degisiklikSayisi > 10) // DeÄŸiÅŸiklik sayÄ±sÄ± 10'dan fazla olamaz
     {
-		cout << "Deðiþiklik sayýsý 10'dan fazla olamaz!\n";
+		cout << "DeÄŸiÅŸiklik sayÄ±sÄ± 10'dan fazla olamaz!\n";
 		return;
 	}
-    if (degisiklikSayisi > 0) // Deðiþiklik varsa
+    if (degisiklikSayisi > 0) // DeÄŸiÅŸiklik varsa
     {
         answer = 'h';
-        cout << "Maçta giren-çýkan oyuncularýn TC kimlik bilgilerini kaydetmek istiyor musunuz? (e/h) (toplam " << degisiklikSayisi << " kadar kayýt gerekli)\n";
+        cout << "MaÃ§ta giren-Ã§Ä±kan oyuncularÄ±n TC kimlik bilgilerini kaydetmek istiyor musunuz? (e/h) (toplam " << degisiklikSayisi << " kadar kayÄ±t gerekli)\n";
         cin >> answer;
-        if (answer == 'e' || answer == 'E') // Giriþ kontrolü
+        if (answer == 'e' || answer == 'E') // GiriÅŸ kontrolÃ¼
         {
-            maclarDosyaYaz << "Maçta Yapýlan Deðiþiklik Sayýsý: " << degisiklikSayisi << endl;
-            // Deðiþiklikleri kaydetmek için döngü
+            maclarDosyaYaz << "MaÃ§ta YapÄ±lan DeÄŸiÅŸiklik SayÄ±sÄ±: " << degisiklikSayisi << endl;
+            // DeÄŸiÅŸiklikleri kaydetmek iÃ§in dÃ¶ngÃ¼
             for (int i = 1; i <= degisiklikSayisi; ++i)
             {
                 string degisenOyuncuTC, girenOyuncuTC;
-                cout << i << ". Çýkan Oyuncunun TC Kimlik Numarasý: ";
+                cout << i << ". Ã‡Ä±kan Oyuncunun TC Kimlik NumarasÄ±: ";
                 cin >> degisenOyuncuTC;
 
-                // Deðiþen oyuncunun TC kimlik no kontrolü (tc kimlik hiçbir futbolcuda yoksa hata ver)
+                // DeÄŸiÅŸen oyuncunun TC kimlik no kontrolÃ¼ (tc kimlik hiÃ§bir futbolcuda yoksa hata ver)
                 Futbolcu F;
                 ifstream tcKontrol("futbolcular.txt");
                 bool futbolcuBulundu = false;
-                if (tcKontrol.is_open()) // Dosya açýldý mý kontrol
+                if (tcKontrol.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
                 {
                     while (tcKontrol >> F.takimNO >> F.TCNO >> F.adi >> F.soyadi >> F.lisansNO >> F.konumu >> F.ucret >> F.dogumTarihi)
                     {
@@ -1440,21 +1422,21 @@ void futbolOyunuKaydi()
                     }
                 }
                 tcKontrol.close();
-                if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+                if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
                 {
-                    cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadý.\n";
+                    cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadÄ±.\n";
                     return;
                 }
 
-                maclarDosyaYaz << i << ". Çýkan Oyuncu: " << degisenOyuncuTC << endl;
-                cout << i << ". Giren Oyuncunun TC Kimlik Numarasý: ";
+                maclarDosyaYaz << i << ". Ã‡Ä±kan Oyuncu: " << degisenOyuncuTC << endl;
+                cout << i << ". Giren Oyuncunun TC Kimlik NumarasÄ±: ";
                 cin >> girenOyuncuTC;
 
-                // Giren oyuncunun TC kimlik no kontrolü (tc kimlik hiçbir futbolcuda yoksa hata ver)
+                // Giren oyuncunun TC kimlik no kontrolÃ¼ (tc kimlik hiÃ§bir futbolcuda yoksa hata ver)
                 Futbolcu F2;
                 ifstream tcKontrol2("futbolcular.txt");
                 futbolcuBulundu = false;
-                if (tcKontrol2.is_open()) // Dosya açýldý mý kontrol
+                if (tcKontrol2.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
                 {
                     while (tcKontrol2 >> F2.takimNO >> F2.TCNO >> F2.adi >> F2.soyadi >> F2.lisansNO >> F2.konumu >> F2.ucret >> F2.dogumTarihi)
                     {
@@ -1466,9 +1448,9 @@ void futbolOyunuKaydi()
                     }
                 }
                 tcKontrol2.close();
-                if (!futbolcuBulundu) // Futbolcu bulunamadýysa hata ver
+                if (!futbolcuBulundu) // Futbolcu bulunamadÄ±ysa hata ver
                 {
-                    cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadý.\n";
+                    cout << "Girilen TC kimlik No'ya sahip oyuncu bulunamadÄ±.\n";
                     return;
                 }
                 maclarDosyaYaz << i << ". Giren Oyuncu: " << girenOyuncuTC << endl;
@@ -1476,60 +1458,60 @@ void futbolOyunuKaydi()
         }
         else
         {
-            cout << "Sadece yapýlan deðiþiklik sayýsý kaydedildi\n";
-            maclarDosyaYaz << "Maçta Yapýlan Deðiþiklik Sayýsý: " << degisiklikSayisi << endl;
+            cout << "Sadece yapÄ±lan deÄŸiÅŸiklik sayÄ±sÄ± kaydedildi\n";
+            maclarDosyaYaz << "MaÃ§ta YapÄ±lan DeÄŸiÅŸiklik SayÄ±sÄ±: " << degisiklikSayisi << endl;
         }
     }
-    else // Deðiþiklik 0 ise
+    else // DeÄŸiÅŸiklik 0 ise
     {
-        maclarDosyaYaz << "Maçta Yapýlan Deðiþiklik Sayýsý: " << degisiklikSayisi << endl;
+        maclarDosyaYaz << "MaÃ§ta YapÄ±lan DeÄŸiÅŸiklik SayÄ±sÄ±: " << degisiklikSayisi << endl;
     }
     maclarDosyaYaz << "------------------------------" << endl;
     maclarDosyaYaz.close();
 
-    cout << "Maç kaydý baþarýyla oluþturuldu." << endl;
+    cout << "MaÃ§ kaydÄ± baÅŸarÄ±yla oluÅŸturuldu." << endl;
 }
-// Haftalýk kayýt alma fonksiyonu
+// HaftalÄ±k kayÄ±t alma fonksiyonu
 void haftalikKayit()
 {
-    // Maçlar kontrolü
+    // MaÃ§lar kontrolÃ¼
     ifstream maclarKontrol("maclar.txt");
-    if (!maclarKontrol.is_open()) // Maçlar var mý (oluþturulmuþ mu) kontrol
+    if (!maclarKontrol.is_open()) // MaÃ§lar var mÄ± (oluÅŸturulmuÅŸ mu) kontrol
     {
-        cerr << "Dosya açma hatasý! Önce maç kaydý oluþturmayý deneyin." << endl;
+        cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce maÃ§ kaydÄ± oluÅŸturmayÄ± deneyin." << endl;
         return;
     }
 
     int istekHafta = 0;
-    cout << "Kaçýncý haftanýn kaydý yapýlacak: ";
+    cout << "KaÃ§Ä±ncÄ± haftanÄ±n kaydÄ± yapÄ±lacak: ";
     cin >> istekHafta;
-    if (istekHafta <= 0) // Hafta negatif veya sýfýr olamaz
+    if (istekHafta <= 0) // Hafta negatif veya sÄ±fÄ±r olamaz
     {
-		cout << "Hafta negatif veya sýfýr olamaz!\n";
+		cout << "Hafta negatif veya sÄ±fÄ±r olamaz!\n";
 		return;
 	}
 
-    // Ýstenilen haftaya kadar kayýt yapmak için döngü (ama tam çalýþmýyor sadece girilen haftayý yapýyor)
+    // Ä°stenilen haftaya kadar kayÄ±t yapmak iÃ§in dÃ¶ngÃ¼ (ama tam Ã§alÄ±ÅŸmÄ±yor sadece girilen haftayÄ± yapÄ±yor)
     for (int i = 1; i <= istekHafta; i++)
     {
         string kayit = to_string(istekHafta) + ". hafta_kayit.txt";
         ofstream maclarDosyasi(kayit);
         ifstream maclarOku("maclar.txt");
-        if (maclarDosyasi.is_open() && maclarOku.is_open()) // Dosyalar açýldý mý kontrol
+        if (maclarDosyasi.is_open() && maclarOku.is_open()) // Dosyalar aÃ§Ä±ldÄ± mÄ± kontrol
         {
-            cout << to_string(i) << ". Hafta oynanan maçlar kaydediliyor..." << endl;
+            cout << to_string(i) << ". Hafta oynanan maÃ§lar kaydediliyor..." << endl;
             string satir;
             maclarOku.seekg(0);
             maclarDosyasi.seekp(0);
-            string haftaBilgisi = to_string(istekHafta) + ". Hafta Karþýlaþmasý Kaydý";
+            string haftaBilgisi = to_string(istekHafta) + ". Hafta KarÅŸÄ±laÅŸmasÄ± KaydÄ±";
             bool istekHaftaBasladi = false;
             string oncekiSatir;
             int a = 1;
 
-            // Tüm maçlarýn kaydedildiði dosyadan haftaya göre maç seçmek için döngü
+            // TÃ¼m maÃ§larÄ±n kaydedildiÄŸi dosyadan haftaya gÃ¶re maÃ§ seÃ§mek iÃ§in dÃ¶ngÃ¼
             while (getline(maclarOku, satir))
             {
-                // Ýstenilen haftayý bulma kontrolü
+                // Ä°stenilen haftayÄ± bulma kontrolÃ¼
                 if (satir.find(haftaBilgisi) != string::npos)
                 {
                     istekHaftaBasladi = true;
@@ -1539,15 +1521,15 @@ void haftalikKayit()
                     istekHaftaBasladi = false;
                 }
 
-                // Hafta bulunduysa yapýlacak iþlemler
+                // Hafta bulunduysa yapÄ±lacak iÅŸlemler
                 if (istekHaftaBasladi)
                 {
-                    if (a) // Maçý yapan takýmlarý yazdýrmak için döngüde tek sefer çalýþan koþul
+                    if (a) // MaÃ§Ä± yapan takÄ±mlarÄ± yazdÄ±rmak iÃ§in dÃ¶ngÃ¼de tek sefer Ã§alÄ±ÅŸan koÅŸul
                     {
                         maclarDosyasi << oncekiSatir << endl;
                         a = 0;
                     }
-                    // Bulunan haftanýn bilgilerini almak için döngü
+                    // Bulunan haftanÄ±n bilgilerini almak iÃ§in dÃ¶ngÃ¼
                     while (getline(maclarOku, satir))
                     {
                         // Tarihi kaydetme
@@ -1560,55 +1542,55 @@ void haftalikKayit()
                         {
                             maclarDosyasi << satir << endl;
                         }
-                        // Goller ile ilgili satýrlarý alma
+                        // Goller ile ilgili satÄ±rlarÄ± alma
                         else if (satir.find("Gol") != string::npos)
                         {
                             maclarDosyasi << satir << endl;
                         }
-                        // Maç kaydýnýn ilk parçasý bitti ise 2. parçayý
-                       // atlayýp diðer maç kaydýna geçme
+                        // MaÃ§ kaydÄ±nÄ±n ilk parÃ§asÄ± bitti ise 2. parÃ§ayÄ±
+                       // atlayÄ±p diÄŸer maÃ§ kaydÄ±na geÃ§me
                         else if (satir.find("---") != string::npos)
                         {
                             a = 1;
-                            getline(maclarOku, satir); // Gereksiz satýrý atlama
-                            getline(maclarOku, satir); // Gereksiz satýrý atlama
-                            getline(maclarOku, satir); // Gereksiz satýrý atlama
-                            maclarDosyasi << satir << endl; //araya "-----" için
-                            //getline(maclarOku, satir); // Gereksiz satýrý atlama
+                            getline(maclarOku, satir); // Gereksiz satÄ±rÄ± atlama
+                            getline(maclarOku, satir); // Gereksiz satÄ±rÄ± atlama
+                            getline(maclarOku, satir); // Gereksiz satÄ±rÄ± atlama
+                            maclarDosyasi << satir << endl; //araya "-----" iÃ§in
+                            //getline(maclarOku, satir); // Gereksiz satÄ±rÄ± atlama
 
                             break;
                         }
                     }
                 }
-                oncekiSatir = satir; // Maçý yapan takýmlarý alma
-                // (maclar dosyasýnda hafta bilgisinden hemen önce yer alýyorlar)
+                oncekiSatir = satir; // MaÃ§Ä± yapan takÄ±mlarÄ± alma
+                // (maclar dosyasÄ±nda hafta bilgisinden hemen Ã¶nce yer alÄ±yorlar)
             }
             maclarDosyasi.close();
             maclarOku.close();
-            cout << "Haftanýn kaydý baþarýyla tamamlandý.\n";
+            cout << "HaftanÄ±n kaydÄ± baÅŸarÄ±yla tamamlandÄ±.\n";
         }
-        else // Dosyalar açýlmadýysa oynanmamýþ haftalar için de kayýt istenmiþtir veya küçük ihtimal dosya açýlamamýþtýr
+        else // Dosyalar aÃ§Ä±lmadÄ±ysa oynanmamÄ±ÅŸ haftalar iÃ§in de kayÄ±t istenmiÅŸtir veya kÃ¼Ã§Ã¼k ihtimal dosya aÃ§Ä±lamamÄ±ÅŸtÄ±r
         {
-            cerr << "Dosya açma hatasý! Haftasý oynanmamýþ maçlar için de kayýt istemiþ olabilirsiniz. Maç kaydý yapmayý deneyin." << endl;
+            cerr << "Dosya aÃ§ma hatasÄ±! HaftasÄ± oynanmamÄ±ÅŸ maÃ§lar iÃ§in de kayÄ±t istemiÅŸ olabilirsiniz. MaÃ§ kaydÄ± yapmayÄ± deneyin." << endl;
             break;
         }
 	}
 }
-// Haftalýk kayýt görüntüleme fonksiyonu
+// HaftalÄ±k kayÄ±t gÃ¶rÃ¼ntÃ¼leme fonksiyonu
 void haftalikKayitGoruntule()
 {
 	int hafta = 0;
-	cout << "Kaydý görüntülenecek haftayý girin: ";
+	cout << "KaydÄ± gÃ¶rÃ¼ntÃ¼lenecek haftayÄ± girin: ";
 	cin >> hafta;
-    if (hafta <= 0) // Hafta negatif veya sýfýr olamaz
+    if (hafta <= 0) // Hafta negatif veya sÄ±fÄ±r olamaz
     {
-		cout << "Hafta negatif veya sýfýr olamaz!\n";
+		cout << "Hafta negatif veya sÄ±fÄ±r olamaz!\n";
 		return;
 	}
-    // Dosyayý okuma
+    // DosyayÄ± okuma
 	string haftaBilgisi = to_string(hafta) + ". hafta_kayit.txt";
 	ifstream dosya(haftaBilgisi);
-    if (dosya.is_open()) // Dosya açýldý mý kontrol
+    if (dosya.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
     {
 		string satir;
         while (getline(dosya, satir))
@@ -1619,57 +1601,57 @@ void haftalikKayitGoruntule()
 	}
     else
     {
-		cerr << "Dosya açma hatasý! Dosya var olmayabilir, haftalýk kayýt oluþturmayý deneyin." << endl;
+		cerr << "Dosya aÃ§ma hatasÄ±! Dosya var olmayabilir, haftalÄ±k kayÄ±t oluÅŸturmayÄ± deneyin." << endl;
         return;
 	}
 }
-// Haftalýk puan durumu görüntüleme fonksiyonu
+// HaftalÄ±k puan durumu gÃ¶rÃ¼ntÃ¼leme fonksiyonu
 void haftalikPuanDurumlari()
 {
     int hafta = 0;
-    cout << "Puan durumu gösterilecek haftayý girin: ";
+    cout << "Puan durumu gÃ¶sterilecek haftayÄ± girin: ";
     cin >> hafta;
-    if (hafta <= 0) // Hafta negatif veya sýfýr olamaz
+    if (hafta <= 0) // Hafta negatif veya sÄ±fÄ±r olamaz
     {
-        cout << "Hafta negatif veya sýfýr olamaz!\n";
+        cout << "Hafta negatif veya sÄ±fÄ±r olamaz!\n";
         return;
     }
-    const int takimSayisi = 21; // Aslýnda 20 takým var ama 0. indis boþ kalýyor çünkü takýmlar dosyasý 1. deðerden baþlýyor
+    const int takimSayisi = 21; // AslÄ±nda 20 takÄ±m var ama 0. indis boÅŸ kalÄ±yor Ã§Ã¼nkÃ¼ takÄ±mlar dosyasÄ± 1. deÄŸerden baÅŸlÄ±yor
     
-    string takimlar[takimSayisi]{}; // Takýmlarýn isimlerini tutacak dizi
-    int takimPuanlari[takimSayisi] = { 0 }; // Takýmlarýn puanlarýný tutacak dizi
-    int takimOynadigiMacSayisi[takimSayisi] = { 0 }; // Takýmlarýn oynadýðý maç sayýsýný tutacak dizi
-    int takimAttigiGolSayisi[takimSayisi] = { 0 }; // Takýmlarýn attýðý gol sayýsýný tutacak dizi
-    int takimYedigiGolSayisi[takimSayisi] = { 0 }; // Takýmlarýn yediði gol sayýsýný tutacak dizi
-    int takimAveraj[takimSayisi] = { 0 }; // Takýmlarýn averajýný tutacak dizi
-    int takimGalibiyetSayisi[takimSayisi] = { 0 }; // Takýmlarýn galibiyet sayýsýný tutacak dizi
-    int takimBeraberlikSayisi[takimSayisi] = { 0 }; // Takýmlarýn beraberlik sayýsýný tutacak dizi
-    int takimMaglubiyetSayisi[takimSayisi] = { 0 }; // Takýmlarýn maðlubiyet sayýsýný tutacak dizi
+    string takimlar[takimSayisi]{}; // TakÄ±mlarÄ±n isimlerini tutacak dizi
+    int takimPuanlari[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n puanlarÄ±nÄ± tutacak dizi
+    int takimOynadigiMacSayisi[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n oynadÄ±ÄŸÄ± maÃ§ sayÄ±sÄ±nÄ± tutacak dizi
+    int takimAttigiGolSayisi[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n attÄ±ÄŸÄ± gol sayÄ±sÄ±nÄ± tutacak dizi
+    int takimYedigiGolSayisi[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n yediÄŸi gol sayÄ±sÄ±nÄ± tutacak dizi
+    int takimAveraj[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n averajÄ±nÄ± tutacak dizi
+    int takimGalibiyetSayisi[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n galibiyet sayÄ±sÄ±nÄ± tutacak dizi
+    int takimBeraberlikSayisi[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n beraberlik sayÄ±sÄ±nÄ± tutacak dizi
+    int takimMaglubiyetSayisi[takimSayisi] = { 0 }; // TakÄ±mlarÄ±n maÄŸlubiyet sayÄ±sÄ±nÄ± tutacak dizi
     
     Takim T;
 
     ifstream takimDosyaOku;
     takimDosyaOku.open("takimlar.txt", ios::in);
     takimDosyaOku.seekg(0, ios::beg);
-    // Takýmlarýn isimlerini alma
+    // TakÄ±mlarÄ±n isimlerini alma
     while (takimDosyaOku >> T.takimNO >> T.adi >> T.adresi >> T.telefon >> T.oyuncuSayisi >> T.yoneticiIsmi)
     {
         takimlar[T.takimNO] = T.adi;
     }
     takimDosyaOku.close();
 
-    // Her bir hafta kaydýndan verileri alma
+    // Her bir hafta kaydÄ±ndan verileri alma
     for (int i = 1; i <= hafta; i++)
     {
         string haftaBilgisi = to_string(i) + ". hafta_kayit.txt";
         ifstream dosya(haftaBilgisi);
-        if (dosya.is_open()) // Dosya açýldý mý kontrol
+        if (dosya.is_open()) // Dosya aÃ§Ä±ldÄ± mÄ± kontrol
         {
             string satir;
-            // Dosya içeriðini satýr satýr okuma
+            // Dosya iÃ§eriÄŸini satÄ±r satÄ±r okuma
             while (getline(dosya, satir))
             {
-                // Takýmlarýn isimlerini almak için koþul (bununla o takýmýn takýmNO bilgisini alýyoruz)
+                // TakÄ±mlarÄ±n isimlerini almak iÃ§in koÅŸul (bununla o takÄ±mÄ±n takÄ±mNO bilgisini alÄ±yoruz)
                 if (satir.find("vs") != string::npos)
                 {
                     string evTakim, vs, misafirTakim;
@@ -1681,41 +1663,41 @@ void haftalikPuanDurumlari()
                     takimBul.seekg(0, ios::beg);
                     Takim T1;
                     int takimEvNo = 0, takimMisafirNo = 0;
-                    // Takýmlar dosyasýndan takým isimlerine göre takýmNO bilgilerini almak için döngü
+                    // TakÄ±mlar dosyasÄ±ndan takÄ±m isimlerine gÃ¶re takÄ±mNO bilgilerini almak iÃ§in dÃ¶ngÃ¼
                     while (takimBul >> T1.takimNO >> T1.adi >> T1.adresi >> T1.telefon >> T1.oyuncuSayisi >> T1.yoneticiIsmi)
                     {
-                        if (T1.adi == evTakim) // Ev sahibi takýmýn takýmNO bilgisini almak için koþul
+                        if (T1.adi == evTakim) // Ev sahibi takÄ±mÄ±n takÄ±mNO bilgisini almak iÃ§in koÅŸul
                         {
 							takimEvNo = T1.takimNO;
 						}
-                        else if (T1.adi == misafirTakim) // Misafir takýmýn takýmNO bilgisini almak için koþul
+                        else if (T1.adi == misafirTakim) // Misafir takÄ±mÄ±n takÄ±mNO bilgisini almak iÃ§in koÅŸul
                         {
                             takimMisafirNo = T1.takimNO;
                         }
                     }
                     takimBul.close();
-                    if (takimEvNo == 0 && takimMisafirNo == 0) // Takýmlar dosyasýnda takým isimlerine göre takýmNO bulunamadýysa
+                    if (takimEvNo == 0 && takimMisafirNo == 0) // TakÄ±mlar dosyasÄ±nda takÄ±m isimlerine gÃ¶re takÄ±mNO bulunamadÄ±ysa
                     {
-                        cerr << "Takým bulunamadý! Takým eklemesi yapmayý deneyin.\n";
+                        cerr << "TakÄ±m bulunamadÄ±! TakÄ±m eklemesi yapmayÄ± deneyin.\n";
                         return;
                     }
 
                     int evSkor = 0, misafirSkor = 0;
-                    string skor, tire; // Skor satýrýndaki gereksiz bilgileri atlamak için atama
-                    getline(dosya, satir); // Tarih satýrýný atla
-                    getline(dosya, satir); // Skor satýrýný oku
+                    string skor, tire; // Skor satÄ±rÄ±ndaki gereksiz bilgileri atlamak iÃ§in atama
+                    getline(dosya, satir); // Tarih satÄ±rÄ±nÄ± atla
+                    getline(dosya, satir); // Skor satÄ±rÄ±nÄ± oku
 
-                    if (satir.find("Skor") != string::npos) // Skor satýrý bulunduysa
+                    if (satir.find("Skor") != string::npos) // Skor satÄ±rÄ± bulunduysa
                     {
 						stringstream(satir) >> skor >> evSkor >> tire >> misafirSkor;
 					}
                     else
                     {
-						cerr << "Skor satýrý bulunamadý!\n";
+						cerr << "Skor satÄ±rÄ± bulunamadÄ±!\n";
 						return;
 					}
-                    // Puan ve diðer hesaplar için koþullar
-                    if (evSkor > misafirSkor) // Ev sahibi kazandý, misafir kaybetti
+                    // Puan ve diÄŸer hesaplar iÃ§in koÅŸullar
+                    if (evSkor > misafirSkor) // Ev sahibi kazandÄ±, misafir kaybetti
                     {
                         takimPuanlari[takimEvNo] += 3;
                         takimPuanlari[takimMisafirNo] += 0;
@@ -1727,7 +1709,7 @@ void haftalikPuanDurumlari()
                         takimYedigiGolSayisi[takimEvNo] += misafirSkor;
                         
                     }
-                    else if (evSkor < misafirSkor) // Misafir kazandý, ev sahibi kaybetti
+                    else if (evSkor < misafirSkor) // Misafir kazandÄ±, ev sahibi kaybetti
                     {
                         takimPuanlari[takimEvNo] += 0;
                         takimPuanlari[takimMisafirNo] += 3;
@@ -1753,35 +1735,35 @@ void haftalikPuanDurumlari()
             }
             dosya.close();  
         }
-        else // Dosya açýlmadýysa oynanmamýþ haftalar için de kayýt istenmiþtir veya küçük ihtimal dosya açýlamamýþtýr
+        else // Dosya aÃ§Ä±lmadÄ±ysa oynanmamÄ±ÅŸ haftalar iÃ§in de kayÄ±t istenmiÅŸtir veya kÃ¼Ã§Ã¼k ihtimal dosya aÃ§Ä±lamamÄ±ÅŸtÄ±r
         {
-            cerr << "Dosya açma hatasý! Önce oynanmýþ tüm maçlarýn hafta kayýtlarýný alýn." << endl;
+            cerr << "Dosya aÃ§ma hatasÄ±! Ã–nce oynanmÄ±ÅŸ tÃ¼m maÃ§larÄ±n hafta kayÄ±tlarÄ±nÄ± alÄ±n." << endl;
             break;
         }
     }
 
-    // Takýmlarý puanlarýna göre sýralama iþlemi
+    // TakÄ±mlarÄ± puanlarÄ±na gÃ¶re sÄ±ralama iÅŸlemi
     for (int i = 1; i < takimSayisi; i++)
     {
         int enBuyukPuan = takimPuanlari[i];
         int enBuyukPuaninIndisi = i;
 
-        // Dizi içinde en büyük puaný bulma
+        // Dizi iÃ§inde en bÃ¼yÃ¼k puanÄ± bulma
         for (int j = i + 1; j < takimSayisi; j++)
         {
-            if (takimPuanlari[j] > enBuyukPuan) // Sonraki indisteki deðer bir önceki indisteki deðerden büyükse
+            if (takimPuanlari[j] > enBuyukPuan) // Sonraki indisteki deÄŸer bir Ã¶nceki indisteki deÄŸerden bÃ¼yÃ¼kse
             {
                 enBuyukPuan = takimPuanlari[j];
                 enBuyukPuaninIndisi = j;
             }
         }
 
-        // Takýmlarý puanlarýna göre büyükten küçüðe sýralama
+        // TakÄ±mlarÄ± puanlarÄ±na gÃ¶re bÃ¼yÃ¼kten kÃ¼Ã§Ã¼ÄŸe sÄ±ralama
         if (enBuyukPuaninIndisi != i)
         {
-            // Takýmlarýn tüm deðerlerinin yerini deðiþtirme
-            swap(takimlar[i], takimlar[enBuyukPuaninIndisi]); // 1. sýraya en büyük puana sahip takýmý getir
-            swap(takimPuanlari[i], takimPuanlari[enBuyukPuaninIndisi]); // 1. sýraya en büyük puaný getir vs...
+            // TakÄ±mlarÄ±n tÃ¼m deÄŸerlerinin yerini deÄŸiÅŸtirme
+            swap(takimlar[i], takimlar[enBuyukPuaninIndisi]); // 1. sÄ±raya en bÃ¼yÃ¼k puana sahip takÄ±mÄ± getir
+            swap(takimPuanlari[i], takimPuanlari[enBuyukPuaninIndisi]); // 1. sÄ±raya en bÃ¼yÃ¼k puanÄ± getir vs...
             swap(takimOynadigiMacSayisi[i], takimOynadigiMacSayisi[enBuyukPuaninIndisi]);
             swap(takimAttigiGolSayisi[i], takimAttigiGolSayisi[enBuyukPuaninIndisi]);
             swap(takimYedigiGolSayisi[i], takimYedigiGolSayisi[enBuyukPuaninIndisi]);
@@ -1792,18 +1774,18 @@ void haftalikPuanDurumlari()
         }
     }
 
-    // Puanlar eþitse Averaj durumuna göre sýralama
+    // Puanlar eÅŸitse Averaj durumuna gÃ¶re sÄ±ralama
     for (int i = 0; i < takimSayisi; i++)
     {
         for (int j = i + 1; j < takimSayisi; j++)
         {
-            if (takimPuanlari[i] == takimPuanlari[j]) // Puanlarýn eþit olduðu durumda
+            if (takimPuanlari[i] == takimPuanlari[j]) // PuanlarÄ±n eÅŸit olduÄŸu durumda
             {
-                if (takimAveraj[i] < takimAveraj[j]) // Averajý küçükse yerlerini deðiþtir
+                if (takimAveraj[i] < takimAveraj[j]) // AverajÄ± kÃ¼Ã§Ã¼kse yerlerini deÄŸiÅŸtir
                 {
-                    // Takýmlarýn yerini deðiþtirme
-                    swap(takimlar[i], takimlar[j]); // 1. sýraya en büyük averaja sahip takýmý getirdik
-                    swap(takimPuanlari[i], takimPuanlari[j]); // 1. sýraya en büyük averajý getirdik
+                    // TakÄ±mlarÄ±n yerini deÄŸiÅŸtirme
+                    swap(takimlar[i], takimlar[j]); // 1. sÄ±raya en bÃ¼yÃ¼k averaja sahip takÄ±mÄ± getirdik
+                    swap(takimPuanlari[i], takimPuanlari[j]); // 1. sÄ±raya en bÃ¼yÃ¼k averajÄ± getirdik
                     swap(takimOynadigiMacSayisi[i], takimOynadigiMacSayisi[j]);
                     swap(takimAttigiGolSayisi[i], takimAttigiGolSayisi[j]);
                     swap(takimYedigiGolSayisi[i], takimYedigiGolSayisi[j]);
@@ -1815,14 +1797,14 @@ void haftalikPuanDurumlari()
             }
 		}
     }
-    // Dosyaya tabloyu yazdýrma
+    // Dosyaya tabloyu yazdÄ±rma
     ofstream puanDosyaYaz;
     puanDosyaYaz.open("SLTablo.txt");
-    puanDosyaYaz << "Süper Lig Puan Durumu" << endl;
+    puanDosyaYaz << "SÃ¼per Lig Puan Durumu" << endl;
     puanDosyaYaz << "---------------------------------------------------------------------------------------------------------------------------------" << endl;
-    puanDosyaYaz << "Takým\t\t  |\tPuan\t|\tO\t|\tG\t|\tM\t|\tB\t|\t+/-\t|\tA\t|" << endl;
+    puanDosyaYaz << "TakÄ±m\t\t  |\tPuan\t|\tO\t|\tG\t|\tM\t|\tB\t|\t+/-\t|\tA\t|" << endl;
     puanDosyaYaz << "---------------------------------------------------------------------------------------------------------------------------------" << endl;
-    // Her bir takýmýn bilgilerini dosyaya yazdýrma
+    // Her bir takÄ±mÄ±n bilgilerini dosyaya yazdÄ±rma
     for (int i = 1; i < 21; i++)
     {
         takimOynadigiMacSayisi[i] = takimGalibiyetSayisi[i] + takimBeraberlikSayisi[i] + takimMaglubiyetSayisi[i];
@@ -1836,5 +1818,5 @@ void haftalikPuanDurumlari()
         puanDosyaYaz << "---------------------------------------------------------------------------------------------------------------------------------" << endl;
 	}
     puanDosyaYaz.close();
-	cout << "Lig tablosu baþarýyla oluþturuldu." << endl;
+	cout << "Lig tablosu baÅŸarÄ±yla oluÅŸturuldu." << endl;
 }
